@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ml">
+<head>
+  <meta charset="UTF-8">
+  <title>Image Animation</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: #111;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      flex-wrap: wrap;
+    }
+
+    .image-container {
+      position: relative;
+      width: 200px;
+      height: 150px;
+      margin: 15px;
+      opacity: 0;
+      transform: translateY(50px) scale(0.8);
+      transition: all 1s ease;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.5);
+    }
+
+    .image-container.visible {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+
+    .image-container img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="image-container"><img src="img1.jpeg" alt="Image 1"></div>
+  <div class="image-container"><img src="img2.jpeg" alt="Image 2"></div>
+  <div class="image-container"><img src="img3.jpeg" alt="Image 3"></div>
+  <div class="image-container"><img src="img4.jpeg" alt="Image 4"></div>
+  <div class="image-container"><img src="img5.jpeg" alt="Image 5"></div>
+  <div class="image-container"><img src="img6.jpeg" alt="Image 6"></div>
+
+  <script>
+    window.addEventListener('DOMContentLoaded', () => {
+      const containers = document.querySelectorAll('.image-container');
+      containers.forEach((container, index) => {
+        setTimeout(() => {
+          container.classList.add('visible');
+        }, index * 400);
+      });
+    });
+  </script>
+
+</body>
+</html>
